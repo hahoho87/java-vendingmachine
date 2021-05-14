@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 class VendingMachineTest {
 
@@ -33,5 +34,29 @@ class VendingMachineTest {
         int inputMoney = 500;
         vendingMachine.put(inputMoney);
         assertThat(vendingMachine.getChanges()).isEqualTo(1500);
+    }
+
+    @Test
+    @DisplayName("500원이 들어있는 자판기에서 500원을 차감하면 0원이 남는다")
+    void return0WhenWithdraw50OnVendingMachineWith1000() {
+        VendingMachine vendingMachine = new VendingMachine(500);
+        vendingMachine.withdraw(500);
+        assertThat(vendingMachine.getChanges()).isZero();
+    }
+
+    @Test
+    @DisplayName("1000원이 들어있는 자판기에서 500원을 차감하면 500원이 남는다")
+    void return500WhenWithdraw50OnVendingMachineWith1000() {
+        VendingMachine vendingMachine = new VendingMachine(1000);
+        vendingMachine.withdraw(500);
+        assertThat(vendingMachine.getChanges()).isEqualTo(500);
+    }
+
+    @Test
+    @DisplayName("0원이 들어있는 자판기에서 500원을 차감할 수 없다")
+    void cannotWithDraw500OnVendingMachineWith1000() {
+        VendingMachine vendingMachine = new VendingMachine(0);
+        Throwable throwable = catchThrowable(() -> vendingMachine.withdraw(500));
+        assertThat(throwable).isInstanceOf(IllegalStateException.class);
     }
 }
