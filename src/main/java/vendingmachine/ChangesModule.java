@@ -1,14 +1,14 @@
 package vendingmachine;
 
-public class VendingMachine {
+public class ChangesModule {
 
     private int changes;
 
-    public VendingMachine() {
+    public ChangesModule() {
         this(0);
     }
 
-    public VendingMachine(int changes) {
+    public ChangesModule(int changes) {
         this.changes = changes;
     }
 
