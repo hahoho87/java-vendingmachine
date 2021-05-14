@@ -1,4 +1,4 @@
-package vendingmachine;
+package changesModule;
 
 public class Application {
     public static void main(String[] args) {

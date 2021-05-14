@@ -1,4 +1,4 @@
-package vendingmachine;
+package changesModule;
 
 public class ChangesModule {
 
