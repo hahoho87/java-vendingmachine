@@ -16,6 +16,8 @@
 - [ ] 반환 요청을 하는 경우 잔돈 반환  
 - [ ] 최소 개수의 동전으로 잔돈 반환
 
+- [ ] VendingMachine 을 ChangesModule 로 변경
+
 ---
 
 - VendingMachine
